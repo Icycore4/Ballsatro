@@ -219,100 +219,101 @@ function keyPressed() {
     }
   }
 
-if (key === 'Enter' && gamePhase === 'gameover') {
-startNewGame();
-loop();
-}
+  if (key === 'Enter' && gamePhase === 'gameover') {
+    startNewGame();
+    loop();
+  }
 }
 
 // Draw the hand of cards
 function drawCard(card, x, y) {
-let cardWidth = 100;
-let cardHeight = 150;
-fill(255);
-rect(x, y, cardWidth, cardHeight, 10);
-fill(0);
-textAlign(CENTER, CENTER);
-textSize(24);
-text(card.rank, x + cardWidth / 2, y + cardHeight / 3);
-text(suitSymbols[card.suit], x + cardWidth / 2, y + 2 * cardHeight / 3);
+  let cardWidth = 100;
+  let cardHeight = 150;
+  fill(255);
+  rect(x, y, cardWidth, cardHeight, 10);
+  fill(0);
+  textAlign(CENTER, CENTER);
+  textSize(24);
+  text(card.rank, x + cardWidth / 2, y + cardHeight / 3);
+  text(suitSymbols[card.suit], x + cardWidth / 2, y + 2 * cardHeight / 3);
 }
 
 // Helper functions
 function startNewGame() {
-hand = [];
-score = 0;
-lastHandResult = '';
-handsPlayed = 0;
-money = 0;
-maxHands = 6;
-targetScore = 500;
-gamePhase = 'playing';
-deck = [];
-cardsLeft = 52;
-rerollsLeft = 10;
-selectedCardIndex = -1;
-showHandValues = false;
-generateDeck();
-shuffle(deck, true);
+  hand = [];
+  score = 0;
+  lastHandResult = '';
+  handsPlayed = 0;
+  money = 0;
+  maxHands = 6;
+  targetScore = 500;
+  gamePhase = 'playing';
+  deck = [];
+  cardsLeft = 52;
+  rerollsLeft = 10;
+  selectedCardIndex = -1;
+  showHandValues = false;
+  generateDeck();
+  shuffle(deck, true);
 }
 
 function generateDeck() {
-deck = [];
-for (let suit of suits) {
-for (let rank of ranks) {
-deck.push({ rank, suit });
-}
-}
+  deck = [];
+  for (let suit of suits) {
+    for (let rank of ranks) {
+      deck.push({ rank, suit });
+    }
+  }
 }
 
 function startNewRound() {
-handsPlayed++;
-if (handsPlayed >= maxHands) {
-gamePhase = 'gameover';
-win = score >= targetScore;
-noLoop();
-} else {
-hand = [];
-rerollsLeft = 10;
-selectedCardIndex = -1;
-drawCardsForHand();
-gamePhase = 'playing';
-}
+  handsPlayed++;
+  if (handsPlayed >= maxHands) {
+    gamePhase = 'gameover';
+    win = score >= targetScore;
+    noLoop();
+  } else {
+    hand = [];
+    rerollsLeft = 10;
+    selectedCardIndex = -1;
+    drawCardsForHand();
+    gamePhase = 'playing';
+  }
 }
 
 function drawCardsForHand() {
-for (let i = 0; i < 5; i++) {
-hand.push(drawCardFromDeck());
-}
+  for (let i = 0; i < 5; i++) {
+    hand.push(drawCardFromDeck());
+  }
 }
 
 function drawCardFromDeck() {
-cardsLeft--;
-return deck.pop();
+  cardsLeft--;
+  return deck.pop();
 }
 
 function scoreHand() {
-if (handEvaluated) return;
+  if (handEvaluated) return;
 
-lastHandResult = Hand ${roundNumber} - ;
-lastHandPoints = evaluateHand(hand);
-score += lastHandPoints;
+  lastHandResult = `Hand ${roundNumber} - `;
+  lastHandPoints = evaluateHand(hand);
+  score += lastHandPoints;
 
-if (score >= targetScore) {
-targetScore *= 1.5;
-handsPlayed = 0;
-gamePhase = 'shop';
-lastHandResult += You've hit the target score!;
-} else {
-lastHandResult += Hand score: +${lastHandPoints};
-}
+  if (score >= targetScore) {
+    targetScore *= 1.5;
+    handsPlayed = 0;
+    gamePhase = 'shop';
+    lastHandResult += `You've hit the target score!`;
+  } else {
+    lastHandResult += `Hand score: +${lastHandPoints}`;
+  }
 
-roundNumber++;
-handEvaluated = true;
+  roundNumber++;
+  handEvaluated = true;
 }
 
 function evaluateHand(hand) {
-// Simulate scoring for now (you can expand with real poker logic)
-return Math.floor(Math.random() * 100) + 10;
+  // Simplified evaluation logic for now (you can expand it with a more complex algorithm)
+  let points = Math.floor(Math.random() * 100) + 10;
+  return points;
 }
