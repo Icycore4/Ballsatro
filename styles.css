@@ -1,0 +1,156 @@
+/* General Styles */
+body {
+  background-color: #2c3e50;
+  font-family: 'Arial', sans-serif;
+  color: #ecf0f1;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+canvas {
+  border: 2px solid #34495e;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: #2c3e50;
+}
+
+button {
+  background-color: #16a085;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1abc9c;
+}
+
+button:disabled {
+  background-color: #7f8c8d;
+  cursor: not-allowed;
+}
+
+/* Game Interface */
+#game-info {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+}
+
+#game-info span {
+  display: block;
+}
+
+#game-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 18px;
+}
+
+#game-controls button {
+  margin: 0 10px;
+}
+
+/* Hand cards */
+.card {
+  width: 100px;
+  height: 150px;
+  border-radius: 10px;
+  margin: 10px;
+  display: inline-block;
+  background-color: #ecf0f1;
+  text-align: center;
+  font-size: 24px;
+  line-height: 150px;
+  color: #2c3e50;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.selected-card {
+  border: 3px solid #f39c12;
+}
+
+/* Game Over Screen */
+#gameover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#gameover h1 {
+  font-size: 48px;
+  color: #f39c12;
+}
+
+#gameover p {
+  font-size: 24px;
+}
+
+/* Shop Screen */
+#shop {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 400px;
+  height: 500px;
+  border-radius: 10px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+#shop button {
+  margin-top: 20px;
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 15px;
+  font-size: 18px;
+  width: 80%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#shop button:hover {
+  background-color: #c0392b;
+}
+
+#shop h2 {
+  margin-top: 20px;
+  font-size: 28px;
+}
+
+/* Overlay */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 999;
+}
+
+#overlay.active {
+  display: block;
+}
