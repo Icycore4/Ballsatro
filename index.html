@@ -1,56 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><link rel="stylesheet" href="styles.css">
+<head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Card Game</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f0f0f0;
-    }
-    .game-controls {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 20px;
-      z-index: 10;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-      border: none;
-      background-color: #55aa55;
-      color: white;
-    }
-    button:hover {
-      background-color: #88cc88;
-    }
-  </style>
+  <title>Card Combo Game</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
 </head>
 <body>
 
-<!-- Game controls -->
-<div class="game-controls">
-  <button id="score-hand-btn">Score Hand</button>
-  <button id="show-values-btn">Show Hand Values</button>
-  <button id="draw-card-btn">Draw Card</button>
-  <button id="reroll-card-btn">Reroll Card</button>
-</div>
+  <div class="top-buttons">
+    <button onclick="startNewGame()">Start New Game</button>
+    <button onclick="restartGame()">Restart Round</button>
+    <button onclick="showRules()">Show Rules</button>
+  </div>
 
-<!-- p5.js Canvas (game will be rendered here) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-<script src="game.js"></script>
+  <main>
+    <div id="game-canvas"></div>
+  </main>
 
+  <script src="game.js"></script>
 </body>
 </html>
